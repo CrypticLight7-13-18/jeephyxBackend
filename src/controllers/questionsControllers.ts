@@ -10,22 +10,29 @@ export const getQuestions = asyncHandler(
   }
 );
 
-export const addQuestion = asyncHandler(
-    async (req: Request, res: Response) => {
-        const { title, difficulty, type, videoLink, question, answer, solution , options } = req.body;
-        res.status(201).json({
-            success: true,
-            message: "Question added",
-            data: {
-                title,
-                difficulty,
-                type,
-                videoLink,
-                question,
-                answer,
-                solution,
-                options,
-            },
-        });
-    }
-)
+export const addQuestion = asyncHandler(async (req: Request, res: Response) => {
+  const {
+    title,
+    difficulty,
+    type,
+    videoLink,
+    question,
+    answer,
+    solution,
+    options,
+  } = req.body;
+  res.status(201).json({
+    success: true,
+    message: "Question added",
+    data: {
+      title,
+      difficulty,
+      type,
+      videoLink,
+      question,
+      answer,
+      solution,
+      options,
+    },
+  });
+});

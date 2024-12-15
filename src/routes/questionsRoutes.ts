@@ -4,8 +4,8 @@ import { validateAddQuestion } from "../middleware/questionsValidator";
 
 const questionsRouter = Router();
 
-questionsRouter.get('/', getQuestions);
+questionsRouter.get("/", getQuestions);
 
-questionsRouter.post('/addQuestion', validateAddQuestion, addQuestion);
+questionsRouter.post("/addQuestion", validateAddQuestion, addQuestion);
 
 export default questionsRouter;
