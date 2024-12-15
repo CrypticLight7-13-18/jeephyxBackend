@@ -4,6 +4,7 @@ import routes from './routes';
 import { config } from 'dotenv';
 import helmet from 'helmet';
 import cors from 'cors';
+import errorHandler from './middleware/errorhandler';
 
 // Load environment variables
 config();
@@ -18,9 +19,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 // Use cors for enabling Cross-Origin Resource Sharing with ports 3000, 3001 and 3002 in development
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002']
-}));
+app.use(cors());
 
 // Use the JSON middleware
 app.use(express.json());
@@ -34,7 +33,7 @@ app.get('/health', (req, res) => {
 app.use('/api', routes);
 
 // Error handling middleware
-// To be written here
+app.use(errorHandler);
 
 // Start the server
 app.listen(port, () => {
