@@ -33,6 +33,10 @@ app.get("/health", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // Use the routes defined in 'routes'
 app.use("/api", routes);
 
