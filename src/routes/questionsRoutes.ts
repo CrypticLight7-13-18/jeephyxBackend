@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { addQuestion, getQuestions } from "../controllers/questionsControllers";
-import { validateAddQuestion } from "../middleware/questionsValidator";
+import { addQuestionsController, getQuestions } from "../controllers/questionsControllers";
+import { validateAddQuestions  } from "../middleware/questionsValidator";
 
 const questionsRouter = Router();
 
 questionsRouter.get("/", getQuestions);
 
-questionsRouter.post("/addQuestion", validateAddQuestion, addQuestion);
+questionsRouter.post("/addQuestion", validateAddQuestions, addQuestionsController);
 
 export default questionsRouter;
