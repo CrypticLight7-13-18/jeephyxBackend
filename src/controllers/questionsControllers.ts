@@ -2,10 +2,15 @@ import asyncHandler from "express-async-handler";
 import { Request, Response } from "express";
 import Question , { QuestionModel } from "../models/questions";
 import { addQuestions } from "../services/questions/addQuestions";
+import { QuestionBankMCQModel , QuestionBankNumericalModel , RoadmapMCQModel , RoadmapNumericalModel } from "../models/question";
 
 export const getQuestions = asyncHandler(
   async (req: Request, res: Response) => {
-    const questions = await QuestionModel.find();
+    const roadmapMCQQuestions = await RoadmapMCQModel.find();
+    const roadmapNumericalQuestions = await RoadmapNumericalModel.find();
+    const questionBankMCQQuestions = await QuestionBankMCQModel.find();
+    const questionBankNumericalQuestions = await QuestionBankNumericalModel.find();
+    const questions = [...roadmapMCQQuestions, ...roadmapNumericalQuestions, ...questionBankMCQQuestions, ...questionBankNumericalQuestions];
     res.status(200).json({
       success: true,
       message: "Get all questions",
