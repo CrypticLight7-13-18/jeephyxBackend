@@ -8,7 +8,7 @@ export const validateAddQuestions = (req: Request, res: Response, next: NextFunc
       level: Joi.number().integer().min(1).max(10).required(),
       uploadTo: Joi.string().required(),
       questionType: Joi.string().valid('Numerical', 'MCQ').required(),
-      videoLink: Joi.string().uri().optional(),
+      videoLink: Joi.string().optional().default('#'),
       question: Joi.string().required(),
       solution: Joi.string().required(),
       tags: Joi.array().items(Joi.string()).required(),
